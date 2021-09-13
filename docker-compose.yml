@@ -1,7 +1,19 @@
 services:
   react-frontend:
     image: gym-react-frontend-local
+    networks:
+      - gym-net
     build: .
     command: ["start"]
     ports:
       - "80:3000"
+  backend-api:
+    image: eahlberg12/gym-node-backend
+    networks:
+      - gym-net
+    volumes:
+      - ./node-backend-config_local:/var/www/config
+
+networks:
+  gym-net:
+    driver: bridge
