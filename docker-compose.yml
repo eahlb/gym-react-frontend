@@ -1,0 +1,7 @@
+services:
+  react-frontend:
+    image: gym-react-frontend-local
+    build: .
+    command: ["start"]
+    ports:
+      - "80:3000"
