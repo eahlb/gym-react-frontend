@@ -1,16 +1,21 @@
 services:
   react-frontend:
     image: gym-react-frontend-local
-    networks:
-      - gym-net
-    build: .
-    volumes:
-      - ./:/app
     command: ["start"]
     ports:
-      - "80:3000"
+      - "8080:3000"
+    networks:
+      - gym-net
+    volumes:
+      - ./:/app
+    depends_on:
+      - backend-api
+    build: .
   backend-api:
     image: eahlberg12/gym-node-backend
+    command: ["api-only"]
+    ports:
+      - "8081:3000"
     networks:
       - gym-net
     volumes:
