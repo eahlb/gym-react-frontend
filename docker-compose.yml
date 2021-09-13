@@ -4,6 +4,8 @@ services:
     networks:
       - gym-net
     build: .
+    volumes:
+      - ./:/app
     command: ["start"]
     ports:
       - "80:3000"
